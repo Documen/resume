@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
@@ -56,11 +55,45 @@
 				<div class="box-1">
 					<div class="box-1a">
 						<div class="box-1aa">
-							<h1 class="box-1h">FLY LIKE EGRET</h1>
-							<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet qui dolorem</p>
+							<h1 class="box-1h">ABOUT ME</h1>
+							<p class="indent">
+								Firstly,Thank you for watching.
+								I hope I can make a good performance tody.
+								I am truly responsible for the work and highly motivated.
+								I have the ability to work well with others.
+							</p>
+							<p>
+								In my spare time,I like playing basketball.
+							</p>
+							<p class="indent">
+								I think I’m a good team player and I’m a person of great honesty to others ,Also I am able to work under great presure. 
+								That’s all ,I hope you give me a chance.	
+							</p>
 							<div>
-								<a href="">Learn more<i class="iconfont icon-set"></i></a>
-								<a href="">Download now<i class="iconfont icon-yezi"></i></a>
+								From the beginning to learn to the present time:
+								<br>
+								<a href="javaScript:;" ><span class="time1"></span><i class="iconfont icon-set "></i></a>
+								<a href="javaScript:;" ><span class="time2"></span><i class="iconfont icon-yezi"></i></a>
+								<script defer>
+								function run(){
+									var nowTime=new Date();
+									var beginTime=new Date('2017-2-13');
+									var millSecond=nowTime.getTime()-beginTime.getTime();
+									//console.log(millSecond);
+									var second = Math.floor(millSecond / 1000 % 60);
+									var minute = Math.floor(millSecond / 1000 / 60 % 60);   
+									var hour = Math.floor(millSecond / 1000 / 60 / 60 % 24);
+									var day = Math.floor(millSecond / 1000 / 60 / 60 / 24);
+									document.querySelector('.time1').innerHTML=`${day} 天    ${hour} 时`;
+									document.querySelector('.time2').innerHTML=`${minute} 分   ${second} 秒`;
+									//console.log(day);
+									
+								}	
+								run();
+								setInterval(function(){
+									run();
+								},1000)
+								</script>
 							</div>
 						</div>
 					</div>
