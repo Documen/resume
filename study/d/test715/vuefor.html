@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件与循环</title>
+	<script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+	<!-- <div id="app">
+		<p v-if="seen">你现在看见我了</p>
+		<li v-for="t in todos">
+			{{t.text}}
+		</li>
+	</div>
+	<a href="javascript:alert('sucess')">清除缓存</a>
+
+	<ol>
+		<todo-item>没看懂</todo-item>
+	</ol> -->
+	<div id="app1">
+		<ol>
+			<todo-item
+			v-for="item in List"
+			v-bind:key="item.id"
+			v-bind:todo="item"
+			>
+			</todo-item>
+		</ol>
+	</div>
+</body>
+</html>
+<script>
+	// var app=new Vue({
+	// 	el:"#app",
+	// 	data:{
+	// 		seen:true,
+	// 		todos:[
+	// 			{text:"study javaScript"},
+	// 			{text:"study Vue"},
+	// 			{text:'整个牛项目'}
+	// 		]
+	// 	}
+	// })
+	Vue.component('todo-item',{
+		props:['todo'],
+		template:'<li>{{todo.text}}</li>'
+	})
+	var app1=new Vue({
+		el:'#app1',
+		data:{
+			List:[
+			{id:0,text:"蔬菜"},
+			{id:1,text:"水果"},
+			{id:2,text:"王八"}
+			]
+		}
+	})
+	
+
+
+	var data={a:1};
+	var vm=new Vue({
+		data:data
+	})
+//	console.log(vm.$data==data);
+//	console.log(vm.data);
+
+
+
+/*	const obj={
+		a:20,
+		b:30
+	}
+	console.log(obj.a);
+	obj.a=50;
+	console.log(obj.a);
+	let a=1;
+	a=2;
+	console.log(a);*/
+	var first='lizhongzheng';
+	var id=111;
+	 		 // var name='your name is'+first;
+    
+    	var url='http://localhost:3000/';
+    	
+
+    var name=`your name is+++${first}`;
+    var qiren=`http://localhost:3000/+${id}`;
+console.log(name,qiren);
+
+var a=1,b=2;
+
+var c=`aaaa${a}`;
+console.log(c);
+
+
+console.log(a+111);
+</script>

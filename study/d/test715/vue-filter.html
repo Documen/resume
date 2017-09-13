@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-filterAND缩写</title>
+	<script src="https://unpkg.com/vue"></script>
+  <style>
+    a{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+	<div class="test">{{message|capitalize}}这是一个啥？？？这是干啥用的？？</div>
+  <div class="abc">
+    <a v-on:click="dosomething">v-on:click</a>
+    <a @click="getname">@click</a>
+  </div>
+  <div id="example">
+    <p>原来的消息:"{{message}}"</p>
+    <p>现在的消息:"{{reverseMessage}}"</p>
+  </div>
+  
+</body>
+</html>
+<script>
+/*new Vue({
+  // ...
+  el:".test",
+  data:{
+    message:"abcd"
+  },
+  filters:{
+    capitalize:function(value){
+      if(!value) return '';
+      value=value.toString()
+      return value.charAt(0).toUpperCase()+value.slice(1)
+    }
+  }
+})*/
+
+
+new Vue({
+  el:".abc",
+  data:{
+    name:"my name is abc",
+    sex:"boy"
+  },
+  methods:{
+    dosomething:function(){
+
+     alert(this.name);
+    },
+    getname(){
+      alert(this.sex);
+    }
+  }
+})
+
+
+//computed有缓存
+ var vm=new Vue({
+    el:"#example",
+    data:{
+      message:"hello"
+    },
+    computed:{
+      reverseMessage(){
+        return this.message.split('').reverse().join('')
+      }
+    }
+  })
+
+</script>

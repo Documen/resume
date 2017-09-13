@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+<div></div>
+	
+</body>
+</html>
+
+
+
+
+<script type="text/javascript">
+var div=document.querySelector('div');
+	
+	div.onmouseover=function(){
+		alphaPlay(div,'show')
+	}
+	div.onmouseout=function(){
+		alphaPlay(div,'hide')
+	}
+function alphaPlay(obj, method) { //method有两个值show或hiden 
+	var n = (method == "show") ? 0 : 100,
+		ie = (window.ActiveXObject) ? true : false;
+	var time = setInterval(function() {
+		if (method == "show") {
+			if (n < 100) {
+				n += 10;
+				if (ie) {
+					obj.style.cssText = "filter:alpha(opacity=" + n + ")";
+				} else {
+					(n == 100) ? obj.style.opacity = 1: obj.style.opacity = "0." + n;
+				}
+			} else {
+				clearTimeout(time);
+			}
+		} else {
+			if (n > 0) {
+				n -= 10;
+				if (ie) {
+					obj.style.cssText = "filter:alpha(opacity=" + n + ")";
+				} else {
+					obj.style.opacity = "0." + n;
+				}
+			} else {
+				clearTimeout(time);
+			}
+		}
+	}, 30);
+}
+</script>

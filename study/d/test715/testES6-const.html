@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>const</title>
+</head>
+<body>
+	<div>1111</div>
+	<div>2222</div>
+	<div>3333</div>
+	<div>4444</div>
+	<!-- <script>
+		
+			for(var i=0;i<div.length;i++){
+				div[i].index=i;
+				div[i].onclick=function(){
+					console.log(this.index)
+				}
+			}
+	</script> -->
+	<script>
+	var div=document.querySelectorAll('div');
+		//闭包
+		//console.log(div)]
+		function haha(i) {
+			var lick = function() {
+				console.log(i)
+			}
+			return lick;
+		}
+		for (var i = 0; i < div.length; i++) {
+			div[i].onclick = haha(i)
+		}
+	</script>
+</body>
+</html>
+<script>
+	var a=[];
+	for(var i=0;i<10;i++){
+		a[i]=function(){
+			//console.log(i)
+		}
+	}
+//	a[6]();
+
+/*function ddd(j){
+	j++;
+	return j+2;
+}
+ddd(0);*/
+console.log((0));
+(i)=>i+1;
+(i);
+console.log(('0'));
+	
+</script>
+<script>
+	var clickBoxs = document.querySelectorAll('.clickBox')；
+	for (var i = 0; i < clickBoxs.length; i++) {
+		clickBoxs[i].onclick = function() {
+			console.log(i)
+			//i=clickBoxs.length
+		}
+	}
+	for (let i = 0; i < clickBoxs.length; i++) {
+		clickBoxs[i].onclick = function() {
+			console.log(i)
+			//i=this.index
+		}
+	}
+</script>

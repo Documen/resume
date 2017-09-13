@@ -1,0 +1,302 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+header {
+  color: red; }
+
+.content p {
+  color: blue; }
+
+#base {
+  height: 50px;
+  background: #ccc;
+  font-size: 20px; }
+
+.border-top {
+  border-top: 10px solid red; }
+
+body {
+  font: 12px/1.5; }
+
+footer p:nth-child(1) {
+  color: red; }
+
+footer p:nth-child(2) {
+  color: yellow; }
+
+footer p:nth-child(3) {
+  color: blue; }
+
+footer p:nth-child(4) {
+  color: green; }
+
+footer p:nth-child(5) {
+  color: purple; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 4em; }
+
+nav li {
+  border: 1px solid pink;
+  color: green; }
+  nav li:hover {
+    color: black; }
+
+nav li {
+  padding-left: 20px; }
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+.clearfix:after {
+  clear: both;
+  overflow: hidden; }
+
+.parent-1 {
+  color: #f00; }
+  .parent-1 .child {
+    width: 100px; }
+
+.parent-2 {
+  color: #f00; }
+  .child {
+    width: 200px; }
+
+.parent-3 {
+  background: #f00; }
+  .child1 {
+    width: 300px; }
+
+  .child2 {
+    width: 400px; }
+
+@media print {
+  .parent1 {
+    color: #f00; }
+    .child1 {
+      width: 200px; } }
+@media print {
+  .parent2 {
+    color: #f00; } }
+  .parent2 .child2 {
+    width: 200px; }
+
+@media prit {
+  .parent3 {
+    color: #F00; } }
+  .child3 {
+    width: 300px; }
+
+.parent .child {
+  color: #f00; }
+
+/* .parent .child*/
+.parent .child {
+  color: #f00; }
+
+/* .child .parent */
+.child .parent {
+  color: #f00; }
+
+/* .child{
+	
+	} */
+.child {
+  color: #f00; }
+
+.demo {
+  font-size: 15px;
+  animation: motion 3s infinite; }
+@keyframes motion {
+  top: 10%;
+  left: 10%; }
+nav li {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  list-style-type: none; }
+
+footer li {
+  background: cyan;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  list-style-type: none;
+  -webkit-border-radius: 20%;
+  border-radius: 20%;
+  border: 1px solid red; }
+  footer li:hover {
+    background: green;
+    color: white; }
+
+li {
+  border-top: 3px dashed green;
+  padding-top: 10px; }
+
+p {
+  border-top: 1px solid red;
+  padding-top: 15px; }
+
+div {
+  border-top: 10px solid #F00;
+  padding-top: 100px; }
+
+.box {
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 3px 3px rgba(0, 0, 0, 0.3), 0 4px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 3px 3px rgba(0, 0, 0, 0.3), 0 4px 4px rgba(0, 0, 0, 0.3); }
+
+.btn, .btn-primary, .btn-second {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 14px; }
+
+.btn-primary {
+  color: white;
+  background-color: #f36; }
+
+.btn-second {
+  background-color: orange;
+  color: #fff;
+  font-size: 18px; }
+
+footer p {
+  text-align: center;
+  padding: 10px; }
+
+.red, .yellow {
+  margin-top: 50px; }
+
+.red, .blue {
+  padding-top: 50px; }
+
+/* 
+	*混合、继承、占位符使用的时机
+	*1、混合使用的时机
+		混合不会自动合并相同样式的代码，造成代码冗余，但是它可以传参。
+		如果代码涉及变量，建议使用混合。
+
+	*2、继承的使用
+		使用继承后，编译出来的css会将使用继承大代码合并在一起（组合选择器的方式）
+		如果代码不需要任何参数，且有一个基类也在一个文件中
+	*3、占位符的使用
+		编译后的css代码与继承相同
+		占位符与继承的主要区别
+			占位符独立定义，不使用的时候不会在css中产生代码
+			继承是首先有一个基类，不管调用不调用，基类样式都会出现在css代码中
+
+	 */
+.login-box {
+  margin-top: 14px;
+  padding-top: 14px; }
+
+/* 
+	编译后的代码
+.login-box {
+  margin-top: 14px;
+  padding-top: 14px;
+} */
+/* .login-box {
+    @include set-value(top, 14px);
+} 
+
+footer p:nth-child(2){
+	font-size:50px;
+}
+*/
+@media only screen and (max-width: 480px) {
+  body {
+    color: red; } }
+/* 
+		8-1颜色函数 
+		淡减：lighten($color,$amount) 
+		加深：darken($color,$amount) 
+		$color:颜色值
+		$amount：百分比
+*/
+body {
+  font-size: 12px;
+  color: #e6e6e6; }
+
+.test {
+  font-size: 1.3333333333rem;
+  /* 给我算出来1.3？？？ */
+  color: #b3b3b3; }
+
+p {
+  color: #ccc; }
+
+/* if(true,1px,2px)
+if(false,1px,2px) */
+span {
+  display: block;
+  height: 100px; }
+
+.to1 {
+  border: 1 solid red; }
+
+.to2 {
+  border: 2 solid red; }
+
+.to3 {
+  border: 3 solid red; }
+
+.to4 {
+  border: 4 solid red; }
+
+/*  
+		*9-4 @each循环
+		*@each $var in <list>OR<map>
+		*$var:表示变量
+		*list:list数据类型
+		*map：map数据类型
+*/
+.dog-icon {
+  background: url("images/dog.png"); }
+
+.dog1-icon {
+  background: url("images/dog1.png"); }
+
+.dog2-icon {
+  background: url("images/dog2.png"); }
+
+.dog3-icon {
+  background: url("images/dog3.png"); }
+
+.cat-icon {
+  background: url("images/cat.jpg");
+  border: 1px solid black;
+  cursor: defaul; }
+
+.cat-icon {
+  background: url("images/cat.jpg");
+  border: 1px solid white;
+  cursor: pointer; }
+
+.cat-icon {
+  background: url("images/cat.jpg");
+  border: 1px solid blue;
+  cursor: move; }
+
+.class {
+  font-size: 2em; }
+
+.class {
+  color: black; }
+
+.class {
+  background: blue; }
+
+/*# sourceMappingURL=main.css.map */

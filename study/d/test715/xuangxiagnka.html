@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>xuanxiangka</title>
+	<style>
+		ul li{
+			float: left;
+			margin: 0  20px;
+		}
+		ul{
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1111</li>
+		<li>2222</li>
+		<li>3333</li>
+	</ul>
+	<div>111111</div>
+	<div>222222</div>
+	<div>333333</div>
+</body>
+</html>
+<script>
+console.log(111)
+	var lis=document.querySelectorAll('li');
+	var div=document.querySelectorAll('div');
+	for (var i=0;i<lis.length;i++){
+		lis[i].index=i;
+		lis[i].onclick=function(){
+			for(var j=0;j<div.length;j++){
+				div[j].style.display='none';
+				div[this.index].style.display='block';
+			}
+		
+		}
+
+	}
+	//我累个去、选项卡都不会写了啊。。。
+	
+</script>

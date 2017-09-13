@@ -1,0 +1,103 @@
+@charset "UTF-8";
+@import url(foo.css);
+p {
+  border-left: 2px solid red; }
+
+div {
+  color: #FAFAAF; }
+
+div {
+  width: 500px;
+  background: black;
+  margin: 50px auto; }
+
+p {
+  border-color: blue; }
+
+/*! 
+	*嵌套
+	*&代表父级
+*/
+p:hover {
+  color: purple; }
+
+/*! 谁给我解释解释*/
+/*! 累死老子了，--watch style.scss:style.css*/
+.class1, .class2 {
+  font-size: 26px; }
+
+.class2 {
+  font-style: italic; }
+
+ul {
+  overflow: hidden; }
+
+li {
+  float: left;
+  margin-left: 50px;
+  list-style: none;
+  color: black; }
+
+.right li {
+  color: blue; }
+
+#navbar li {
+  　　　　border-top-left-radius: 10px;
+  　　　　-moz-border-radius-topleft: 10px;
+  　　　　-webkit-border-top-left-radius: 10px; }
+
+#footer {
+  　　　　border-top-left-radius: 5px;
+  　　　　-moz-border-radius-topleft: 5px;
+  　　　　-webkit-border-top-left-radius: 5px; }
+
+/*内置颜色函数
+lighten(#cc3, 10%) // #d6d65c
+darken(#cc3, 10%) // #a3a329
+grayscale(#cc3) // #808080
+complement(#cc3) // #33c
+*/
+/*插入文件 @import*/
+/*! test.scss*/
+p {
+  background: white; }
+
+/* 高级用法 */
+p {
+  border: 10px solid black; }
+
+.border-1 {
+  border: 1px solid blue; }
+
+.border-2 {
+  border: 2px solid blue; }
+
+.border-3 {
+  border: 3px solid blue; }
+
+.border-4 {
+  border: 4px solid blue; }
+
+.border-5 {
+  border: 5px solid blue; }
+
+.border-6 {
+  border: 6px solid blue; }
+
+.border-7 {
+  border: 7px solid blue; }
+
+.border-8 {
+  border: 8px solid blue; }
+
+.border-9 {
+  border: 9px solid blue; }
+
+/* @function double($n) {
+　　　　@return $n * 2;
+　　}
+　　#sidebar {
+　　　　width: double(5px);
+　　} */
+
+/*# sourceMappingURL=style.css.map */

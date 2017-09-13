@@ -1,0 +1,435 @@
+*{
+	margin:0;
+	padding:0;
+}
+// 1、变量
+	//1-1 全局变量（函数，选择器，混合外边定义的）
+
+$color:red;
+header{
+	color:$color;
+}
+	//1-2 局部变量  $color:red !global; 可以转换成全局变量
+.content{
+	$color:blue;  //覆盖掉了全局$color
+	p{
+		color: $color;
+	}
+}
+	//1-3 默认变量(可重新声明覆盖)
+$baseHeight:50px;
+$baseHeight: 150px !default;
+$baseCorlor: #ccc !default;
+#base{
+	height:$baseHeight;
+	background:$baseCorlor;
+	font-size:20px;
+}
+	//1-4 特殊变量(#{$xxx})
+		//应用于class和属性
+			$borderDirection:top !default;
+			.border-#{$borderDirection}{
+				border-#{$borderDirection}:10px solid red;
+			}
+		//应用复杂属性值
+		$baseFontSize:12px !default;
+		$baseLineHeight:1.5 !default;
+	body{
+    font:#{$baseFontSize}/#{$baseLineHeight};
+    // 12px/15????
+}
+	//1-5多值变量 
+		//	list
+	$moreColor:red yellow blue green purple;
+	@for $i from 1 through 5{
+		footer p:nth-child(#{$i}){
+			color:nth($moreColor,$i);
+		}
+	}
+		//	map   key:value
+
+	$headings:(h1:2em,h2:1.5em,h3:4em);
+	@each $header,$size in $headings{
+		#{$header}{
+			font-size:$size;
+		}
+	}
+
+
+
+//2、嵌套  选择器嵌套，属性嵌套，伪类嵌套
+
+	//2-1选择器嵌套		& 代表上一级选择器
+
+nav{
+	li{
+		border:1px solid pink;
+		color:green;
+		&:hover{
+			color:black;
+		}
+	}
+}
+
+	//2-2属性嵌套
+nav li{
+
+	padding:{
+		left:20px;
+	}
+}
+
+	//2-3伪类嵌套
+.clearfix{
+    &:before,
+    &:after {
+        content:"";
+        display: table;
+      }
+    &:after {
+        clear:both;
+        overflow: hidden;
+      }
+}
+	//2-4 @at-root 调出选择器的嵌套
+		//没有调出嵌套
+	.parent-1 {
+		color:#f00;
+			.child {
+				width:100px;
+		}
+	}
+		//2-4-1单个选择器跳出
+		.parent-2 {
+			color:#f00;
+				@at-root .child {
+				width:200px;
+			}
+		}
+		//多个选择器跳出
+	.parent-3 {
+	  background:#f00;
+	  @at-root {
+	    .child1 {
+	      width:300px;
+	    }
+	    .child2 {
+	      width:400px;
+	    }
+	  }
+	}
+		//跳出父级元素嵌套
+	@media print {
+	    .parent1{
+	      color:#f00;
+	      @at-root .child1 {
+	        width:200px;
+	      }
+	    }
+	}
+		//跳出media嵌套，父级有效
+@media print {
+  .parent2{
+    color:#f00;
+    @at-root (without: media) {
+      .child2 {
+        width:200px;
+      }
+    }
+  }
+}
+		//跳出media和父级
+@media prit{
+	.parent3{
+		color:#F00;
+			@at-root(without:all){
+				.child3{
+					width:300px;
+				}
+			}
+	}
+
+}
+		//2-4-2@at-root与&配合使用
+.child{
+    @at-root .parent &{
+        color:#f00;
+    }
+}
+/* .parent .child*/
+.child{
+     .parent &{
+        color:#f00;
+    }
+}
+/* .child .parent */
+.child{
+     .parent {
+        color:#f00;
+    }
+}
+/* .child{
+	
+	} */
+.child{
+     &{
+        color:#f00;
+    }
+}
+		//2-4-3应用于@keyframe
+			.demo {
+				font-size:15px;
+				animation: motion 3s infinite;
+				@at-root {
+					@keyframes motion {
+						top:10%;
+						left:10%;
+					}
+				}
+			}
+
+//3、混合 处理重复的大段样式
+	// 3-1声明不带参数的混合
+	@mixin border-radious{
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		float:left;
+		padding:10px;
+		margin:10px;
+		list-style-type: none;
+	}
+	//调用
+	nav li{
+		@include border-radious;
+	}
+	//	3-2声明一个带参数混合
+	@mixin border-radius($radius:50%){
+		-webkit-border-radius:$radius;
+		border-radius:$radius;
+	}
+	footer li{
+		background:cyan;
+		@include border-radious;
+		@include border-radius(20%);
+		border:1px solid red;
+		&:hover{
+			background:green;
+			color:white;
+		}
+	}
+		//3-3多个参数的混合（没有好的例子啊，难受）
+		@mixin moreParam($border:1px solid red,$padding:10px){
+			border-top:$border;
+			padding-top:$padding;
+		}
+		li{
+			@include moreParam(3px dashed green);
+		}
+		p{
+			@include moreParam($padding:15px);
+		}
+		div{
+			@include moreParam($border:10px solid #F00,$padding:100px)
+		}
+		//3-4多组值参数mixin  如果一个参数可以有多组值，如box-shadow、transition等，那么参数则需要在变量后加三个点表示，如$variables...。
+		@mixin box-shadow($shadow...) {
+		-webkit-box-shadow:$shadow;
+		box-shadow:$shadow;
+		}
+		.box{
+			border:1px solid #ccc;
+			@include box-shadow(0 2px 2px rgba(0,0,0,.3),0 3px 3px rgba(0,0,0,.3),0 4px 4px rgba(0,0,0,.3));
+		}
+
+
+//4、继承@extend
+.btn{
+	border:1px solid #ccc;
+	padding:6px 10px;
+	font-size:14px;
+}
+.btn-primary{
+	@extend .btn;
+	color:white;
+	background-color:#f36;
+}
+.btn-second{
+	@extend .btn;
+	background-color: orange;
+ 	color: #fff;
+	font-size:18px;
+
+}
+
+footer p{
+	text-align:center;
+	padding:10px;
+}
+
+
+// 5、占位符
+%mt5{
+	margin-top:50px;
+}
+%padd{
+	padding-top:50px;
+}
+.red{
+	@extend %mt5;
+	@extend %padd;
+}
+.yellow{
+	@extend %mt5;
+}
+.blue{
+	@extend %padd;
+}
+
+/* 
+	*混合、继承、占位符使用的时机
+	*1、混合使用的时机
+		混合不会自动合并相同样式的代码，造成代码冗余，但是它可以传参。
+		如果代码涉及变量，建议使用混合。
+
+	*2、继承的使用
+		使用继承后，编译出来的css会将使用继承大代码合并在一起（组合选择器的方式）
+		如果代码不需要任何参数，且有一个基类也在一个文件中
+	*3、占位符的使用
+		编译后的css代码与继承相同
+		占位符与继承的主要区别
+			占位符独立定义，不使用的时候不会在css中产生代码
+			继承是首先有一个基类，不管调用不调用，基类样式都会出现在css代码中
+
+	 */
+
+//6、插值
+$properties: (margin, padding);//两个变量
+@mixin set-value($side, $value) {
+    @each $prop in $properties {
+        #{$prop}-#{$side}: $value;
+    }
+}
+.login-box {
+    @include set-value(top, 14px);
+}
+
+/* 
+	编译后的代码
+.login-box {
+  margin-top: 14px;
+  padding-top: 14px;
+} */
+//nth-chind（） 选择器（）中是阿拉伯数字代表p是footer的第一个子元素
+
+/* .login-box {
+    @include set-value(top, 14px);
+} 
+
+footer p:nth-child(2){
+	font-size:50px;
+}
+*/
+
+//7@content 用来解决css3的@media等带来的问题。它可以使@mixin接受一整块样式，接受的样式从@content开始。
+@mixin max-screen($res){
+  @media only screen and ( max-width: $res )
+  {
+    @content;
+  }
+}
+
+@include max-screen(480px) {
+  body { color: red }
+}
+
+//8函数
+
+		/* 
+				8-1颜色函数 
+				淡减：lighten($color,$amount) 
+				加深：darken($color,$amount) 
+				$color:颜色值
+				$amount：百分比
+		*/
+		$baseFontSize:10px !default;
+		$gray:#ccc;
+		@function pxToRem($px){
+			@return $px/$baseFontSize*1rem;
+		}
+		//调用颜色函数
+		body{
+			font-size:$baseFontSize;
+			color:lighten($gray,10%);
+		}
+		//调用自定义函数
+		.test{
+  			font-size:pxToRem(16px);
+  			/* 给我算出来1.3？？？ */
+  			color:darken($gray,10%);
+		}
+
+//9条件判断及循环
+		//9-1 @if
+		$j:3;
+		p{
+			@if $j==1{
+				color:#aaa;
+			}@else if $j==2{
+				color:#bbb;
+			}@else{
+				color:#ccc;
+			}
+		}  
+
+		//9-2 三目判断
+		//语法为：if($condition, $if_true, $if_false) 。
+		//三个参数分别表示：条件，条件为真的值，条件为假的值。
+		/* if(true,1px,2px)
+		if(false,1px,2px) */
+		span{
+			display:block;
+			height:if(true,100px,200px);
+		}
+		//9-3 for 循环
+//@for $var form start through end   包括end这个数
+//@for $var from start to end	     不包括end这个数
+
+@for $i from 1 to 5{
+	.to#{$i}{
+		border:#{$i} solid red;
+	}
+}
+		/*  
+				*9-4 @each循环
+				*@each $var in <list>OR<map>
+				*$var:表示变量
+				*list:list数据类型
+				*map：map数据类型
+		*/
+
+
+		//9-4-1 单字段数据循环
+		$animals-list:dog dog1 dog2 dog3;
+		@each $animal in $animals-list{
+			.#{$animal}-icon{
+				background:url('images/#{$animal}.png');
+			}
+		}
+
+
+		//9-4-2 多个字段list数据循环
+		$data:(cat,black,defaul),(cat,white,pointer),(cat,blue,move);
+		@each $animal,$color,$cursor in $data{
+			.#{$animal}-icon{
+				background:url('images/#{$animal}.jpg');
+				border:1px solid $color;
+				cursor:$cursor;
+			}
+		}
+		//9-4-3 多个字段map数据循环
+		$property:(font-size: 2em, color: black, background: blue);
+		@each $key,$value in $property{
+			.class{
+				#{$key}:#{$value};
+			}
+		}

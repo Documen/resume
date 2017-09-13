@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>layer</title>
+	<link rel="stylesheet" href="need/layer.css">
+	<script src="../jquery-1.11.0.min.js"></script>
+	<script src="layer.js"></script>
+</head>
+<body>
+	<div>
+		<button>点击1
+		</button>
+		<button>点击2</button>
+	</div>
+	<div id="tong">
+		hahahhahahahha
+	</div>
+</body>
+</html>
+<script>
+	// $.getJSON('test/photos.json?v=' + new Date, function(json) {
+	// 	layer.photos({
+	// 		photos: json,//格式见API文档手册页
+	// 		anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机
+	// 	});
+	// });
+
+var btn=document.querySelectorAll('button');
+for(var i=0;i<btn.length;i++ ){
+
+btn[i].onclick=function(){
+	layer.open({
+		type: 1,
+		title: false,
+		closeBtn:1,
+		area: '516px',
+		skin: 'layui-layer-nobg', //没有背景色
+		shadeClose: true,
+		content: "saaaaaaaaaaaaaaaaaaaaaaa"
+	});
+
+	}
+}
+</script>

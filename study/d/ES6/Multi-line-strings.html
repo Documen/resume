@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multi-line-strings And arrow function</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	var aaa='then took the other as just as fair'+'and having perhaps the better claimnt';
+	//console.log(aaa)
+	var bbb=`then took the other as just as fair and having perhaps the better claimnt`;
+	//console.log(bbb)
+
+	// class Animal{
+ //        constructor(){
+ //            this.type='animal';
+ //        },
+ //        says(say){
+ //            setTimeout({
+ //               console.log(this.type+'says'+say);
+ //            },1000)
+ //        }
+ //    }
+ //    var animal=new Animal()
+ //    animal.says('hi')//undefined says hi
+ /* class Animal{
+        constructor(){
+            this.type='animal'
+        }
+        says(say){
+        	//var self=this;
+            setTimeout(function(){
+               console.log(this.type+' says '+ say)
+            }.bind(this),1000)
+        }
+    }
+    var animal=new Animal()
+    animal.says('hi')//undefined says hi*/
+
+
+    
+
+class Animal{
+        constructor(){
+            this.type='animal'
+        }
+        says(say){
+            setTimeout(()=>{console.log(this.type+' says '+ say)
+                
+            },1000)
+        }
+    }
+    var animal=new Animal()
+    animal.says('hi')
+
+
+
+var Class2=function () {
+	this.name="aaaa";
+	return()=>alert(this.name);
+}
+/*Class1.call(obj);
+obj.showTxt(); //test1*/
+Class2.call({name:"test"})();
+
+
+
+/*let cat ='李中正';
+let dog ='xiaoli';
+let beach={cat:cat,dog:dog}
+console.log(beach) //Object{cat:"李中正"，dog:"xiaoli"}*/
+let me={type:'people',sex:'boy'}
+	let{type,sex}=me;
+	console.log(type,sex)
+
+</script>

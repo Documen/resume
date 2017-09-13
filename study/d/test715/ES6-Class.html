@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Class</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	
+	class baseModel {
+		constructor(){
+			this.name='lizhongzheng';
+		}
+		getName(){
+			console.log(`Class name: ${this.name}`)		
+		}
+	}
+
+	class accountModel extends baseModel{
+		constructor(){
+			super()
+			//this.name='xiaoli';
+		}
+	}
+	let lzz=new accountModel()
+	lzz.getName()
+</script>

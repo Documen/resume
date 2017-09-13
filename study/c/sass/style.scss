@@ -1,0 +1,108 @@
+$color:#FAFAAF;
+$side:left;
+$width:500px;
+$bgcolor:black;
+$marginCenter:50px auto;
+p{
+	border-#{$side}:2px solid red;
+}
+div{
+	color:$color;
+}
+
+div{
+	width:$width;
+	background:$bgcolor;
+	margin:$marginCenter;
+}
+p{
+	border:{
+		color:blue; 
+	}
+}
+/*! 
+	*嵌套
+	*&代表父级
+*/
+p{
+	&:hover{
+		color:purple;
+	}
+}
+//怎么注释不了呢
+/*! 谁给我解释解释*/
+/*! 累死老子了，--watch style.scss:style.css*/
+//继承@extend
+.class1{
+	font-size:26px;
+}
+.class2{
+	@extend .class1;
+	font-style:italic;
+}
+//Mixin可以重用的代码块使用@include调用
+@mixin left($val:10px){
+	float:left;
+	margin-left:$val;
+	list-style:none;
+}
+ul{
+	overflow:hidden;
+}
+li{
+	@include left(50px);
+	color:black;
+}
+.right li{
+	color:blue;
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+#navbar li { @include rounded(top, left); }
+#footer { @include rounded(top, left, 5px); }
+/*内置颜色函数
+lighten(#cc3, 10%) // #d6d65c
+darken(#cc3, 10%) // #a3a329
+grayscale(#cc3) // #808080
+complement(#cc3) // #33c
+*/
+/*插入文件 @import*/
+@import "test.scss";
+@import "foo.css";
+/* 高级用法 */
+//条件语句@if tiaojian {}else{}
+p {
+	@if 1+1==0{
+		border:10px dashed pink;
+	}@else{
+		border:10px solid black;
+	}
+}
+//循环语句
+@for $i from 1 to 10{
+	.border-#{$i}{
+		border:#{$i}px solid blue;
+	}
+}
+//自定义函数
+/* @function double($n) {
+　　　　@return $n * 2;
+　　}
+　　#sidebar {
+　　　　width: double(5px);
+　　} */
+
+
+
+
+
+
+
+
+
+
+

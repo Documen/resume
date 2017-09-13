@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>letANDconst</title>
+</head>
+<body>
+		<div class="clickBox">1111</div>
+		<div class="clickBox">1122</div>
+		<div class="clickBox">13333</div>
+		<div class="clickBox">4441</div>
+</body>
+</html>
+<script>
+	/*	const obj={
+		a:20,
+		b:30
+	}
+	console.log(obj.a);
+	obj.a=50;
+	console.log(obj.a);
+	let a=1;
+	a=2;
+	console.log(a);*/
+	var first='lizhongzheng';
+	var id=111;
+	 		 // var name='your name is'+first;
+    
+    	var url='http://localhost:3000/';
+    	
+
+    var name=`your name is+++${first}`;
+    var qiren=`http://localhost:3000/+${id}`;
+console.log(name,qiren);
+
+var a=1,b=2;
+
+var c=`aaaa${a}`;
+console.log(c);
+
+
+console.log(a+111);
+
+//let 跟 const
+
+/*const a=10;
+a=5;
+console.log(a);*///a已经被声明
+/*let b=250;
+b=111;
+console.log(b);//b已经被声明*/
+
+
+var clickBoxs = document.querySelectorAll('.clickBox')
+for (let i = 0; i < clickBoxs.length; i++){
+    clickBoxs[i].onclick = function(){
+        console.log(i)
+    }
+}
+
+
+</script>

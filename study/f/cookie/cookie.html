@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+</head>
+<body>
+	<p><a href="test.html">我就是尝试一下cookie的用法</a></p>
+
+</body>
+</html>
+<script>
+	/*
+		cookie的学习
+
+	*/
+		
+		var audio=document.createElement('audio');
+		var body=document.querySelector('body');
+		body.appendChild(audio);
+		audio.src='memoryRain.mp3';
+		audio.controls="ture";
+		audio.addEventListener("timeupdate", nowtime, true);
+
+		function nowtime() {
+			var time = audio.currentTime;
+			//console.log(time);
+			setCookie("time",time);
+			console.log(document.cookie)
+		}
+
+
+	function setCookie(name, value, iTime) {
+		var oDate = new Date();
+
+		oDate.setDate(oDate.getDate() + iTime);
+		// document.cookie = name + '=' + value + ';expires=' + oDate.toGMTString();
+		document.cookie=`${name}=${value};expires=${oDate.toGMTString()}`;
+	}
+
+	function getCookie(name) {
+
+		var arr = document.cookie.split("; ");
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i].split("=")[0] == name) {
+				return arr[i].split("=")[1];
+			}
+		}
+
+		return '';
+	}
+
+	function removeCookie(name) {
+		setCookie(name, 1, -1);
+	}
+	
+</script>

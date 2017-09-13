@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	//创建一个对象
+	//in ES5
+var person={
+	name:'Ryan',
+	age:'24',
+	sayName:function(){
+		console.log(this.name)
+	}
+}
+	//in ES6
+var  person={
+	name:'Ryan',
+	sayName(){
+		console.log(this.name)
+	}
+}
+
+
+//in ES5
+function person (name,age,job){
+	return{
+		name:name,
+		age:age,
+		job:job
+	}
+}
+//in ES6
+function person(name,age,job){
+	return{
+		name,
+		age,
+		job
+	}
+}
+
+
+
+
+</script>

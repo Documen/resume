@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>uve.js</title>
+	<link rel="stylesheet" href="	">
+	<link rel="icon" href="favicon.ico" />
+	<!-- 需要引入文件怎么都忘记了 -->
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="myvue">
+		{{message}}
+	</div>
+	<div id="app2"><span v-bind:title="message">aa aa  	</span>	</div>
+	<div id="app3">
+		<p>{{message}}</p>
+		<button v-on:click="reverseMessage">逆转消息</button>
+		</div>
+</body>
+</html>
+<script>
+	var app=new Vue({
+		el:'#myvue',
+		data:{
+			message:'hello Vue!'
+		}
+	})
+
+		var app2=new Vue({
+			el:'#app2',
+			data:{
+				message:'页面加载'+new Date()
+			}
+		})
+		var app3=new Vue({
+			el:'#app3',
+			data:{
+				message:'hello Vue.js!'
+			},
+			methods:{
+				reverseMessage:function () {
+					this.message=this.message.split('').reverse().join('')
+				}
+			}
+		})
+</script>

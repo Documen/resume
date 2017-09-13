@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overflow</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			margin-top: 200px;
+			overflow: hidden;
+
+		}
+		.d2{
+			width: 200px;
+			height: 200px;
+			overflow: auto;
+		}
+		.d3{
+			width: 200px;
+			height: 200px;
+		}
+
+		.f{
+			width: 1200px;
+			margin: 0 auto;
+			background:#ddd;
+		}
+		.float1{
+			width: 300px;
+			height: 300px;
+			background: yellow;
+			float: left;
+		}
+		.float2{
+			width: 300px;
+			height: 300px;
+			background: skyblue;
+			float: left;
+
+		}
+		.no-float{
+			width: 300px;
+			height:300px;
+			background:green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		<div class="d2">
+			<div class="d3">溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk溢出的时候自动出现滚动条kkkkkkkkkkkkkkkkkkkkk</div>
+		</div>
+	</div>
+
+
+	<div class="f">
+		<div class="float1"></div>
+		<div class="float2"></div>
+		<div class="no-float"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+#ES 6
+##4、destructuring(解构)
+#####按照一定的模式，从数组和对象中提取值，对变量进行赋值。
+例子：
+	
+	let cat ='李中正';
+	let dog ='xiaoli';
+	let beach={cat:cat,dog:dog}
+	console.log(beach) //Object{cat:"李中正",dog:"xiaoli"}
+#### inES 6:
+	let cat='li';
+	let dog='zhongzheng';
+	let me={cat,dog}
+	console.log(me) //Object{cat:"li",dog:"zhongzheng"}
+反过来的时候：
+
+	let me={type:'people',sex:'boy'}
+	let{type,sex}=me;
+	console.log(type,sex) //people boy
+##5、Class（类）in ES6
+####oop(面向对象)
+#####ES6使用原型实现类。
+创建一个看类baseModel，并定义一个constructor和一个getName方法：
+
+	class baseModel{
+		constructor(){
+			this.name='lizhongzheng';
+		}
+		getName(){
+			console.log(`Class name: ${this.name}`)		
+		}
+	}
+Class之间可以通过extends关键字实现继承。
+
+	class accountModel extends baseModel{
+		constructor(){
+			super()
+			this.name='xiaoli';
+		}
+	}
+	let lzz=new accountModel()
+	lzz.getName('lzzlzzzzzz')//Class name: xiaoli
+# 6、import export
+### 假设我们有两个文件：index.js 和content.js，现在我们想要在index.js中使用content.js返回的结果
+### in ES6：
+	//index.js
+	import content form './content'
+
+	//content.js
+	export default 'A cat'
+#### ES6 module :
+	//content.js
+	export default 'A cat'
+	export function say(){
+		return 'Hello'
+	}
+	export const type='dog'
+
+	//index.js
+	import {say,type} from './content'
+	let says=say()
+	console.log(`the ${type}` says ${says})//the dog says Hello
+	

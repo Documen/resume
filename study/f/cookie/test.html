@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>尝试获取cookie</title>
+	<script>
+		window.onload=function(){
+			function setCookie(name, value, iTime) {
+				var oDate = new Date();
+				oDate.setDate(oDate.getDate() + iTime);
+				document.cookie = name + '=' + value + ';expires=' + oDate.toGMTString();
+			}
+
+			function getCookie(name) {
+				var arr = document.cookie.split("; ");
+				for (var i = 0; i < arr.length; i++) {
+					if (arr[i].split("=")[0] == name) {
+						return arr[i].split("=")[1];
+					}
+				}
+				return '';
+			}
+
+			function removeCookie(name) {
+				setCookie(name, 1, -1);
+			}
+
+			
+			var audio=document.createElement('audio');
+			var body=document.querySelector('body');
+			body.appendChild(audio);
+			audio.src='memoryRain.mp3';
+			audio.controls="ture";
+
+			//想获取cookie
+			
+			audio.currentTime=getCookie('time');
+			audio.play();
+			//清除cookie
+			setTimeout(function(){
+				removeCookie('time')
+			},1000)
+			
+		}
+		
+	</script>
+</head>
+<body>
+	<p>我要获取cookie的值</p>
+</body>
+</html>
+<script>
+
+	
+</script>
