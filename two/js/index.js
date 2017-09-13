@@ -210,7 +210,7 @@ $(function() {
 				$('.box-2a>ul>li').eq(7).css('transform', 'rotate(50deg)');
 			}
 		}
-		if($('body').scrollTop() >= 1400 && $('body').scrollTop() <= 1700) {
+		if($('body').scrollTop() >= 1600 && $('body').scrollTop() <= 1800) {
 			$('.box-33a').css({
 				'left': '0px',
 				'top': '0px',
@@ -222,7 +222,7 @@ $(function() {
 				'opacity': '1'
 			});
 		}
-		if($('body').scrollTop() >= 1600 && $('body').scrollTop() <= 1800) {
+		if($('body').scrollTop() >= 1700 && $('body').scrollTop() <= 1900) {
 			$('.box-33d').css({
 				'left': '0px',
 				'top': '0px',
@@ -355,4 +355,31 @@ $(function() {
 		$('.box-8img>div').find('img').removeClass('cur');
 		$(this).find('img').addClass('cur');
 	});
+	//时间差
+	function run(){
+		var nowTime=new Date();
+		var beginTime=new Date('2017-2-13');
+		var millSecond=nowTime.getTime()-beginTime.getTime();
+		//console.log(millSecond);
+		var second = Math.floor(millSecond / 1000 % 60);
+		var minute = Math.floor(millSecond / 1000 / 60 % 60);   
+		var hour = Math.floor(millSecond / 1000 / 60 / 60 % 24);
+		var day = Math.floor(millSecond / 1000 / 60 / 60 / 24);				
+		if(second<10){
+		second='0'+second;	
+		}
+		if(minute<10){
+			minute='0'+minute;	
+		}
+		if(hour<10){
+			hour='0'+hour;
+		}
+		document.querySelector('.time1').innerHTML=`${day} 天    ${hour} 时`;
+		document.querySelector('.time2').innerHTML=`${minute} 分   ${second} 秒`;
+		//console.log(day);
+	}	
+	run();
+	setInterval(function(){
+		run();
+	},1000)
 });
